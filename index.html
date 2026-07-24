@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>داشبورد مدیریتی شرکت پخش دارو</title>
+  <meta name="description" content="داشبورد مدیریتی نمایشی فارسی با تم روشن/تیره، نمودارهای آفلاین و خروجی‌گیری بخش فعال" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar glass-card">
+      <div class="sidebar__brand">
+        <div class="brand-badge">Rx</div>
+        <div>
+          <h1>پخش دارو</h1>
+          <p>داشبورد مدیریتی نمایشی</p>
+        </div>
+      </div>
+
+      <nav id="sidebarNav" class="sidebar__nav" aria-label="ناوبری داشبورد"></nav>
+
+      <div class="sidebar__footer">
+        <div class="mini-stat">
+          <span>پایداری سامانه</span>
+          <strong>99.4%</strong>
+        </div>
+        <div class="mini-stat">
+          <span>نسخه</span>
+          <strong>Demo 2.0</strong>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar glass-card">
+        <div class="topbar__left">
+          <div class="export-group" id="exportGroup">
+            <button id="exportToggle" class="btn btn--primary" type="button" aria-haspopup="true" aria-expanded="false">
+              <span>خروجی گرفتن</span>
+              <span class="btn__chevron">▾</span>
+            </button>
+            <div id="exportMenu" class="export-menu" role="menu" aria-label="منوی خروجی">
+              <button class="export-menu__item" data-export="xlsx" type="button">خروجی اکسل (.xlsx)</button>
+              <button class="export-menu__item" data-export="docx" type="button">خروجی Word (.docx)</button>
+              <button class="export-menu__item" data-export="pdf" type="button">خروجی PDF</button>
+              <button class="export-menu__item" data-export="email" type="button">ارسال با ایمیل</button>
+              <button class="export-menu__item" data-export="print" type="button">پرینت مستقیم</button>
+            </div>
+          </div>
+          <button id="themeToggle" class="btn btn--ghost" type="button" aria-label="تغییر تم">
+            <span id="themeToggleIcon">☀️</span>
+            <span id="themeToggleLabel">حالت روشن</span>
+          </button>
+        </div>
+
+        <div class="topbar__right">
+          <div class="page-headings">
+            <p class="eyebrow">داشبورد تحلیلی</p>
+            <h2 id="pageTitle">نمای کلی</h2>
+          </div>
+
+          <div class="role-box">
+            <label for="roleSelect">نقش کاربر</label>
+            <select id="roleSelect">
+              <option value="ceo">مدیرعامل</option>
+              <option value="financeManager">مدیر مالی</option>
+              <option value="hrManager">مدیر منابع انسانی</option>
+            </select>
+          </div>
+        </div>
+      </header>
+
+      <section id="contentRoot" class="content-root"></section>
+    </main>
+  </div>
+
+  <template id="chartErrorTemplate">
+    <div class="chart-error-state">
+      <div class="chart-error-state__icon">⚠️</div>
+      <h4>نمودار بارگذاری نشد</h4>
+      <p>کتابخانهٔ نمودار یا دادهٔ این نمودار به هر دلیلی آماده نیست.</p>
+      <button type="button" class="btn btn--primary retry-chart-btn">تلاش دوباره</button>
+    </div>
+  </template>
+
+  <script src="vendor/chart.umd.min.js"></script>
+  <script src="vendor/xlsx.full.min.js"></script>
+  <script src="vendor/html2canvas.min.js"></script>
+  <script src="vendor/jspdf.umd.min.js"></script>
+  <script src="vendor/html-docx.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
